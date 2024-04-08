@@ -9,31 +9,31 @@ import pickle
 
 # read HE context params, without secret key
 HE_Cl = Pyfhel()
-HE_Cl.restoreContext('key/context_patrimonio2019.txt')
-HE_Cl.restorepublicKey('key/pub_patrimonio2019.key')
+# HE_Cl.restoreContext('key/context_patrimonio2019.txt')
+# HE_Cl.restorepublicKey('key/pub_patrimonio2019.key')
 #HE_Cl.restoresecretKey('key/secret_patrimonio2019.key') # TODO test remove
 
 # HE_Cl.restoreContext('key/context.txt')
 # HE_Cl.restorepublicKey('key/pub.key')
 # #HE_Cl.restoresecretKey('key/secret.key')
 
-# HE_Cl.restoreContext('key/context_small.txt')
-# HE_Cl.restorepublicKey('key/pub_small.key')
-# #HE_Cl.restoresecretKey('key/secret_small.key')
+HE_Cl.restoreContext('key/context_small.txt')
+HE_Cl.restorepublicKey('key/pub_small.key')
+# E_Cl.restoresecretKey('key/secret_small.key')
 
 classification_vars = ['CCAA', 'Sexo']
 
 
 
 # read plain file
-random_csv_filename = 'data/patrimonio2019.csv'
-#random_csv_filename = 'data/random_small.csv'
+# random_csv_filename = 'data/patrimonio2019.csv'
+random_csv_filename = 'data/random_small.csv'
 #random_csv_filename = 'data/random.csv'
 df = pd.read_csv(random_csv_filename)
 
 # read encrypted file
-random_csv_encrypted_filename = 'data/patrimonio2019_encrypted.csv'
-# random_csv_encrypted_filename = 'data/random_small_encrypted.csv'
+# random_csv_encrypted_filename = 'data/patrimonio2019_encrypted.csv'
+random_csv_encrypted_filename = 'data/random_small_encrypted.csv'
 # random_csv_encrypted_filename = 'data/random_encrypted.csv'
 with open(random_csv_encrypted_filename, 'rb') as infile:
     crypt_df = pickle.load(infile)
@@ -48,8 +48,8 @@ with open(random_csv_encrypted_filename, 'rb') as infile:
 #     else:
 #         dec_decrypt_df[colname] = crypt_df[colname]
 # print('df encryptPtxt time (s): ' + str(time.time() - start))
-#print(dec_decrypt_df)
-
+# print(dec_decrypt_df)
+#
 # print('df compare dec_decrypt_df')
 # dec_decrypt_df.compare(df)
 
@@ -58,8 +58,12 @@ with open(random_csv_encrypted_filename, 'rb') as infile:
 # CALCULATION
 # plain group by
 start = time.time()
-#df_res = df.groupby(['CCAA', 'Sexo'])['A'].sum()
-df_res = df.groupby(['CCAA', 'Sexo'])['PAR1'].sum()
+
+# test
+df_res = df.groupby(['CCAA', 'Sexo'])['A'].sum()
+
+# real
+#df_res = df.groupby(['CCAA', 'Sexo'])['PAR1'].sum()
 print('df group_by time (s): ' + str(time.time() - start))
 #print(df_res)
 
@@ -90,8 +94,8 @@ def my_encrypted_groupby_func(x):
 
 # add encrypted
 start = time.time()
-#df_crypt_res = crypt_df.groupby(['CCAA', 'Sexo'])['A'].apply(my_encrypted_groupby_func).reset_index()
-df_crypt_res = crypt_df.groupby(['CCAA', 'Sexo'])['PAR1'].apply(my_encrypted_groupby_func).reset_index()
+df_crypt_res = crypt_df.groupby(['CCAA', 'Sexo'])['A'].apply(my_encrypted_groupby_func).reset_index()
+#df_crypt_res = crypt_df.groupby(['CCAA', 'Sexo'])['PAR1'].apply(my_encrypted_groupby_func).reset_index()
 print('df encrypted group_by time (s): ' + str(time.time() - start))
 
 
@@ -110,8 +114,8 @@ print('df encrypted group_by time (s): ' + str(time.time() - start))
 
 #write output file
 # dump dataframe to a serialized pickle
-random_csv_encrypted_calculated_filename = 'data/patrimonio2019_encrypted_calculated.csv'
-#random_csv_encrypted_calculated_filename = 'data/random_small_encrypted_calculated.csv'
+#random_csv_encrypted_calculated_filename = 'data/patrimonio2019_encrypted_calculated.csv'
+random_csv_encrypted_calculated_filename = 'data/random_small_encrypted_calculated.csv'
 #random_csv_encrypted_calculated_filename = 'data/random_encrypted_calculated.csv'
 
 
@@ -119,7 +123,7 @@ with open(random_csv_encrypted_calculated_filename, 'wb') as output:
      pickle.dump(df_crypt_res, output)
 
 # dump correct result for test
-random_csv_calculated_filename = 'data/patrimonio2019_calculated.csv'
-#random_csv_calculated_filename = 'data/random_small_calculated.csv'
+#random_csv_calculated_filename = 'data/patrimonio2019_calculated.csv'
+random_csv_calculated_filename = 'data/random_small_calculated.csv'
 #random_csv_calculated_filename = 'data/random_calculated.csv'
 df_res.to_csv(random_csv_calculated_filename) #, index=False

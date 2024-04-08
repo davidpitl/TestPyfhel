@@ -30,11 +30,11 @@ print(df)
 
 # create PHE context
 HE = Pyfhel()           # Creating empty Pyfhel object
-#HE.contextGen(p=1964769281, m=8192, base=2, sec=192, flagBatching=False) #50K reg, 0-70M vals OK
+HE.contextGen(p=1964769281, m=8192, base=2, sec=192, flagBatching=False) #50K reg, 0-70M vals OK
 #HE.contextGen(p=65537, m=2048, base=2, sec=128, flagBatching=False)
 #HE.contextGen(p=1964769281, base=2, flagBatching=False)
 
-HE.contextGen(p=65537, m=1024, base=2, sec=192, flagBatching=False)
+#HE.contextGen(p=65537, m=1024, base=2, sec=192, flagBatching=False)
 #HE.contextGen(p=65537, m=2048, base=3, flagBatching=True)   # Generating context. 50K reg, 0-700K vals OK
 # sin probar
 # p=7143541, m=7929968, base=2, sec=128, dig=64i.32f, batch=False

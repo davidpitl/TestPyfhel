@@ -41,7 +41,7 @@ segsocial_append_df['Sexo'] = pd.Series(random.choices(['V','M'], weights=[1, 1]
 segsocial_total_df = segsocial_df.append(segsocial_append_df)
 
 # añadimos columnas aleatorias para los valores de las subvenciones
-segsocial_total_df['SUB1'] = np.random.randint(0,100000, size=len(segsocial_total_df))
+segsocial_total_df['SUB1'] = np.random.randint(0, 100000, size=len(segsocial_total_df))
 
 # escribimos ambos ficheros
 patrimonio_df.to_csv('data/patrimonio2019_poc2.csv', index=False)
