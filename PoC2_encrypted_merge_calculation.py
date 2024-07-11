@@ -32,7 +32,7 @@ with open(patrimonio_csv_encrypted_filename, 'rb') as infile:
     patrimonio_crypt_df = pickle.load(infile)
 
 # seg social
-segsocial_csv_encrypted_filename = 'data2/segs_social2019_poc2_encrypted.csv'
+segsocial_csv_encrypted_filename = 'data2/seg_social2019_poc2_encrypted.csv'
 with open(segsocial_csv_encrypted_filename, 'rb') as infile:
     segsocial_crypt_df = pickle.load(infile)
 
@@ -67,7 +67,7 @@ patrimonio_segsocial_merge_df = pd.merge(patrimonio_df, segsocial_df, on='ID')
 patrimonio_segsocial_merge_calculated_df = patrimonio_segsocial_merge_df.groupby(['CCAA', 'Sexo'], as_index=False)['PAR1', 'SUB1'].sum()
 
 # en el caso no encriptado, grabamos el resultado
-patrimonio_segsocial_merge_calculated_filename = 'data/patrimonio_segsocial2019_poc2_calculated.csv'
+patrimonio_segsocial_merge_calculated_filename = 'data2/patrimonio_segsocial2019_poc2_calculated.csv'
 patrimonio_segsocial_merge_calculated_df.to_csv(patrimonio_segsocial_merge_calculated_filename, index=False)
 
 # TEST
@@ -147,7 +147,7 @@ print('df encrypted group_by time (s): ' + str(time.time() - start))
 
 # escribimos el fichero de salida con los cálculos encriptados
 # dump dataframe to a serialized pickle
-csv_encrypted_calculated_filename = 'data/patrimonio_segsocial2019_encrypted_poc2_calculated.csv'
+csv_encrypted_calculated_filename = 'data2/patrimonio_segsocial2019_encrypted_poc2_calculated.csv'
 with open(csv_encrypted_calculated_filename, 'wb') as output:
      pickle.dump(patrimonio_segsocial_crypt_merge_calculated_df, output)
 

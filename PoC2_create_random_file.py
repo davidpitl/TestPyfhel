@@ -5,7 +5,7 @@ import random
 classification_vars = ['CCAA', 'Sexo']
 
 # leemos fichero de patrimonio
-random_csv_filename = 'data/Patri2019_D.txt'
+random_csv_filename = 'data2/Patri2019_D.txt'
 patrimonio_df = pd.read_csv(random_csv_filename, sep=' &', header=None)
 
 # se crea fichero 1
@@ -44,5 +44,5 @@ segsocial_total_df = segsocial_df.append(segsocial_append_df)
 segsocial_total_df['SUB1'] = np.random.randint(0, 100000, size=len(segsocial_total_df))
 
 # escribimos ambos ficheros
-patrimonio_df.to_csv('data/patrimonio2019_poc2.csv', index=False)
-segsocial_total_df.to_csv('data/seg_social2019_poc2.csv', index=False)
+patrimonio_df.to_csv('data2/patrimonio2019_poc2.csv', index=False)
+segsocial_total_df.to_csv('data2/seg_social2019_poc2.csv', index=False)

@@ -9,7 +9,7 @@ patrimonio_csv_filename = 'data2/patrimonio2019_poc2.csv'
 patrimonio_csv_encrypted_filename = 'data2/patrimonio2019_poc2_encrypted.csv'
 
 segsocial_csv_filename = 'data2/seg_social2019_poc2.csv'
-segsocial_csv_encrypted_filename = 'data2/segs_social2019_poc2_encrypted.csv'
+segsocial_csv_encrypted_filename = 'data2/seg_social2019_poc2_encrypted.csv'
 
 
 classification_vars = ['CCAA', 'Sexo']
@@ -20,8 +20,8 @@ segsocial_df = pd.read_csv(segsocial_csv_filename)
 # create PHE context
 # HE patrimonio
 HE_patrimonio = Pyfhel()
-#HE_patrimonio.contextGen(p=1964769281, base=2, flagBatching=False)
-HE_patrimonio.contextGen(p=65537, m=1024, base=2, sec=192, flagBatching=False)
+HE_patrimonio.contextGen(p=1964769281, base=2, flagBatching=False)
+#HE_patrimonio.contextGen(p=65537, m=1024, base=2, sec=192, flagBatching=False)
 HE_patrimonio.keyGen()
 
 # save PHE context, public and private
@@ -31,8 +31,8 @@ HE_patrimonio.savesecretKey('key2/secret_patrimonio_poc2.key')
 
 # HE seg social
 HE_segsocial = Pyfhel()
-#HE_segsocial.contextGen(p=1964769281, base=2, flagBatching=False)
-HE_segsocial.contextGen(p=65537, m=1024, base=2, sec=192, flagBatching=False)
+HE_segsocial.contextGen(p=1964769281, base=2, flagBatching=False)
+#HE_segsocial.contextGen(p=65537, m=1024, base=2, sec=192, flagBatching=False)
 HE_segsocial.keyGen()
 
 # save PHE context, public and private

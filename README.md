@@ -18,8 +18,12 @@ Desencriptado de los cálculos y verificación de que los resultados coinciden c
 
 # POC 2
 ## PoC2_create_random_file.py
-Crea dos ficheros con subconjuntos de datos simulados de Patrimonio y SegSocial.
+Crea dos ficheros con subconjuntos de datos simulados de Patrimonio (patrimonio2019_poc2.csv) y SegSocial (seg_social2019_poc2.csv).
 
-PoC2_encrypt_file.py
-PoC2_encrypted_merge_calculation.py
-PoC2_decrypt_calculation.py
+## PoC2_encrypt_file.py
+Encripta los dos ficheros anteriores (genera: seg_social2019_poc2_encrypted.csv, patrimonio2019_poc2_encrypted.csv)
+
+## PoC2_encrypted_merge_calculation.py
+
+
+## PoC2_decrypt_calculation.py

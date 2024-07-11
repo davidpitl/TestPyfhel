@@ -11,19 +11,19 @@ classification_vars = ['CCAA', 'Sexo']
 # read HE context params
 # read HE context params, without secret key
 HE_patrimonio = Pyfhel()
-HE_patrimonio.restoreContext('key/context_patrimonio_poc2.txt')
-HE_patrimonio.restorepublicKey('key/pub_patrimonio_poc2.key')
-HE_patrimonio.restoresecretKey('key/secret_patrimonio_poc2.key')
+HE_patrimonio.restoreContext('key2/context_patrimonio_poc2.txt')
+HE_patrimonio.restorepublicKey('key2/pub_patrimonio_poc2.key')
+HE_patrimonio.restoresecretKey('key2/secret_patrimonio_poc2.key')
 
 HE_segsocial = Pyfhel()
-HE_segsocial.restoreContext('key/context_segsocial_poc2.txt')
-HE_segsocial.restorepublicKey('key/pub_segsocial_poc2.key')
-HE_segsocial.restoresecretKey('key/secret_segsocial_poc2.key')
+HE_segsocial.restoreContext('key2/context_segsocial_poc2.txt')
+HE_segsocial.restorepublicKey('key2/pub_segsocial_poc2.key')
+HE_segsocial.restoresecretKey('key2/secret_segsocial_poc2.key')
 
 
 # read calculation file
 # dump dataframe to a serialized pickle
-csv_encrypted_calculated_filename = 'data/patrimonio_segsocial2019_encrypted_poc2_calculated.csv'
+csv_encrypted_calculated_filename = 'data2/patrimonio_segsocial2019_encrypted_poc2_calculated.csv'
 with open(csv_encrypted_calculated_filename, 'rb') as infile:
     crypt_df = pickle.load(infile)
 
@@ -39,5 +39,5 @@ print('df_crypt_res HE.decodeInt(HE.decryptPtx) time (s): ' + str(time.time() - 
 
 
 # dump correct result for test
-csv_encrypted_calculated_decrypted = 'data/patrimonio_segsocial2019_encrypted_poc2_calculated_decrypted.csv'
+csv_encrypted_calculated_decrypted = 'data2/patrimonio_segsocial2019_encrypted_poc2_calculated_decrypted.csv'
 df_decoded_decrypt_crypt_res.to_csv(csv_encrypted_calculated_decrypted, index=False)
